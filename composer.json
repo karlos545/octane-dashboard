@@ -1,0 +1,27 @@
+{
+    "name": "karlos545/octane-dashboard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Karl Roberts",
+            "email": "karl@karlroberts.io"
+        }
+    ],
+    "require": {
+        "jeroennoten/laravel-adminlte": "^1.21",
+        "spatie/laravel-permission": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Octane\\": "src/",
+            "Octane\\Seeds": "src/seeds"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Octane\\OctaneServiceProvider"
+            ]
+        }
+    }
+}
