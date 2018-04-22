@@ -32,6 +32,9 @@ class OctaneServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $events)
     {
+        $this->publishes([
+            __DIR__.'/config/octane.php' => config_path('octane.php'),
+        ]);
         $this->mergeConfigFrom(__DIR__.'/config/octane.php', 'octane');
 
         $this->loadMigrationsFrom(__DIR__.'/migrations');
