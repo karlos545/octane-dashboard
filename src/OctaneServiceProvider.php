@@ -65,9 +65,7 @@ class OctaneServiceProvider extends ServiceProvider
     {
         try {
             $rolesForModules = ModuleModel::all();
-        } catch (QueryException $e) {
-            $rolesForModules = collect();
-        } catch (\PDOException $e) {
+        } catch (QueryException | \PDOException $e) {
             $rolesForModules = collect();
         }
 
@@ -77,7 +75,7 @@ class OctaneServiceProvider extends ServiceProvider
                 'prefix' => "admin/{$module->getLowerCaseName()}",
                 'as' => "admin.{$module->getLowerCaseName()}.",
                 'namespace' => "Octane\\Modules\\{$module->getControllerName()}\Http\Controllers",
-                'middleware' => ['web', "role:superadmin|{$roles}"]
+                'middleware' => ['web', "role:admin|superadmin|{$roles}"]
             ], function ($router) use ($module) {
                 $module->routes($router);
             });
